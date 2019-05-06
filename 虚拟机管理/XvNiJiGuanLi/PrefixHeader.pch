@@ -1,0 +1,40 @@
+//
+//  PrefixHeader.pch
+//  MessagesHook
+//
+//  Created by Aiwei on 2018/7/25.
+//Copyright © 2018年 Aiwei. All rights reserved.
+//
+
+#ifndef MessagesHook_PrefixHeader_pch
+#define MessagesHook_PrefixHeader_pch
+
+
+#ifdef __OBJC__
+
+#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import "JRSwizzle.h"
+#import "VKMsgSend.h"
+#import "HookUITool.h"
+#import "BMClassCategory.h"
+//#import "CDStructures.h"
+#endif
+
+#define HookLog(...) NSLog(@"[Plugin][Hook] %@", [NSString stringWithFormat:__VA_ARGS__])
+#define RunningLog(...) NSLog(@"++++++[Plugin][Running] %@", [NSString stringWithFormat:__VA_ARGS__])
+#define RunningError(...) NSLog(@"------[Plugin][Running] %@", [NSString stringWithFormat:__VA_ARGS__])
+
+#define IsClassWithString(x, y) [x isKindOfClass:NSClassFromString(y)]
+
+#define IsMemberWithString(x,y) [x isMemberOfClass:NSClassFromString(y)]
+
+#define PerformMethod(obj,method,arg1,arg2) [obj performSelector:NSSelectorFromString(method)withObject:arg1 withObject:arg2]
+
+#define PerformClassMethod(class,method,arg1,arg2) [NSClassFromString(class) performSelector:NSSelectorFromString(method)withObject:arg1 withObject:arg2]
+
+#define APIMANAGER [MessageAPIManager manager]
+#define APIDELEGATE [MessageAPIManager manager].delegate
+
+#endif
+
